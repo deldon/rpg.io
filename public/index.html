@@ -1,127 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rpg.io</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <canvas id="myCanvas" width="980" height="732"></canvas>
+    <canvas id="myCanvas2" width="980" height="732"></canvas>
+</body>
+</html>
 
-<canvas id="myCanvas" width="980" height="732"></canvas>
-<canvas id="myCanvas2" width="980" height="732"></canvas>
 <script src="/socket.io/socket.io.js"></script>
-<style>
-    * { padding: 0; margin: 0; }
-    body{
-        margin:auto;
-        background-image: url('img/her.jpeg');
-        
-        
-    }
-    #myCanvas {
-        position: fixed;
-        top: 0px;
-        left: 0px;
-        z-index: 3;
-        background: transparent;
-          }
-          #myCanvas2 {
-        position: fixed;
-        top: 0px;
-        left: 0px;
-        z-index: 1;
-        background: transparent;
-          }
-</style>
-<script>
+<script src="./js/app.js"></script>
 
-function getRandomInt(max) {
-  return Math.floor(Math.random() * max);
-}
-
-
-  var socket = io();
-  const recSize = 28;
-
-  var canvas = document.getElementById("myCanvas");
-var ctx = canvas.getContext("2d");
-
-        var canvas2 = document.getElementById("myCanvas2");
-        var ctx2 = canvas2.getContext("2d");
-
-        
-        //ctx2.clearRect(0, 0, canvas.width, canvas.height);
-
-        for (let i = 0; i < 10; i++) {
-
-            let img = new Image();
-            img.onload = function() {
-                console.log();
-                ctx2.drawImage(img, (90 * getRandomInt(5))+90, (90 * getRandomInt(5))+90);
-            };
-            img.src = '/img/green.jpeg';
-            
-        }
- 
-
-
-
-    
-
-
-  document.addEventListener("keydown", keyDownHandler, false);
-
-function keyDownHandler(e) {
-    if(e.key == "Right" || e.key == "ArrowRight") {
-       
-       socket.emit('chat message', 'right');
-    }
-    if(e.key == "Left" || e.key == "ArrowLeft") {
-        
-        socket.emit('chat message', 'left');
-    }
-    if(e.key == "Up" || e.key == "ArrowUp") {
-        
-        socket.emit('chat message', 'up');
-    }
-    if(e.key == "Down" || e.key == "ArrowDown") {
-        
-        socket.emit('chat message', 'down');
-    }
-}
-let img2 = new Image();
-
-socket.on('chat message', function(msg) {
-    img2.onload = function() {    
-
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-
-//console.log(msg);
-        
-
-    for (const i of msg) {
-    
-   
-        // ctx2.drawImage(img2, 200, 200);
-        //console.log(i.direction);
-        
-        ctx.drawImage(img2, 0, i.direction, 28, 32, (i.x*recSize), (i.y*recSize), 28, 32);
-   
-        // ctx.beginPath();
-        
-        // ctx.rect((i.x*recSize), (i.y*recSize), recSize, recSize);
-        // ctx.fillStyle = i.color;
-        // ctx.fill();
-        // ctx.closePath();
-    }
-};
-img2.src = '/img/sprite.png';   
-   
-
-
-   
-  });
-
-
-
-
-
-
-
-
-
-
-</script>
