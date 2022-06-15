@@ -13,14 +13,19 @@ var canvas2 = document.getElementById("myCanvas2");
 var ctx2 = canvas2.getContext("2d");
 
 //ctx2.clearRect(0, 0, canvas.width, canvas.height);
-for (let i = 0; i < 10; i++) {
+for (let i = 0; i < 50; i++) {
 
     let img = new Image();
     img.onload = function () {
         console.log();
-        ctx2.drawImage(img, (90 * getRandomInt(5)) + 90, (90 * getRandomInt(5)) + 90);
+        ctx2.drawImage(img, 70 * getRandomInt(14), 70 * getRandomInt(10));
     };
-    img.src = '/img/green.jpeg';
+    if (getRandomInt(2) == 0) {
+        img.src = '/img/green.jpeg';
+    }else{
+        img.src = '/img/fleur2.png';
+    }
+   
 
 }
 
