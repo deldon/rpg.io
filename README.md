@@ -10,9 +10,9 @@
 
 ## :video_game: Descriptif
 
-**Rpg.io** et un concept de monde ou vous pouvez vous connecter à plusieurs et vous déplacer librement sur une carte.  
+**Rpg.io** est un concept de monde ou vous pouvez vous connecter à plusieurs et vous déplacer librement sur une carte.  
 
-J'ai créé ce projet pour expérimenter sur le real-time	:hourglass: avec socket.io et travailler l'aspect visuel grâce au canvas :paintbrush: fournie par HTML5.
+J'ai créé ce projet pour expérimenter sur le real-time	:hourglass: avec socket.io et travailler l'aspect visuel grâce au canvas :paintbrush: fourni par HTML5.
 
 ## Installation
 
@@ -26,7 +26,7 @@ Version de Node v18.1.0
 ## Utilisation
 
 1. Ouvrir une invite de commande à la racine du projet
-2. S'assurer d'avoir les dépendance npm installées 
+2. S'assurer d'avoir les dépendances npm installées 
 ```
 npm install
 ```
